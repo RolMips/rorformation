@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Formation RoR</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header class="p-3 bg-dark text-white">
+      <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+          <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+            <li><a href="<%= root_path %>" class="navbar-brand"><%= image_tag 'logo.svg', width: 35, height: 35 %></a></li>
+            <li><a href="<%= categories_path %>" class="nav-link px-2 text-white">Catégories</a></li>
+            <li><a href="<%= posts_path %>" class="nav-link px-2 text-white">Articles</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <div class="container" style="padding-top: 1rem;">
+      <% flash.each do |name, msg| %>
+        <div class="alert alert-<%= name %>"><%= msg %></div>
+      <% end %>
+      <%= yield %>
+    </div>
+  </body>
+</html>

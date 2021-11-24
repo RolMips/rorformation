@@ -1,0 +1,20 @@
+<tr>
+  <td><%= post.id %></td>
+  <td><%= post.title %></td>
+  <td><%= post.category.name%></td>
+  <td><%= post.tags.map(&:name).join(', ') %></td>
+  <% if post.online? %>
+    <td><input class="form-check-input" type="checkbox" checked disabled></td>
+  <% else %>
+    <td><input class="form-check-input" type="checkbox" disabled></td>
+  <% end %>
+    <td>
+      <a href="<%= post_path(post.id) %>" class="btn btn-primary btn-sm">Voir</a>
+      <a href="<%= edit_post_path(post.id) %>" class="btn btn-primary btn-sm">Editer</a>
+      <a href="<%= post_path(post.id) %>" class="btn btn-danger btn-sm" data-confirm="Etes vous sur ?" data-method="delete">Supprimer</a>
+      <%# Equivalent with link_to helper %>
+      <%#= link_to('Voir', post, class: "btn btn-primary btn-sm") %>
+      <%#= link_to('Editer', [:edit, post], class: "btn btn-primary btn-sm") %>
+      <%#= link_to('Supprimer', post, class: "btn btn-danger btn-sm", data: {confirm: 'Etes vous sur ?', method: :delete}) %>
+    </td>
+</tr>

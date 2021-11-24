@@ -1,0 +1,23 @@
+<% if category.errors.any? %>
+    <div class="alert alert-danger">
+      <ul>
+        <% category.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+<% end %>
+<%= form_for category do |f| %>
+    <div class="mb-3">
+        <label>Nom de la catégorie</label>
+        <%= f.text_field :name, placeholder: 'Nom', class: 'form-control' %>
+    </div>
+    <div class="mb-3">
+        <label>URL de la catégorie</label>
+        <%= f.text_field :slug, placeholder: 'url', class: 'form-control' %>
+    </div>
+    <div class="mb-3">
+        <button type="submit" class="btn btn-primary btn-sm">Enregister</button>
+        <a href="<%= categories_path %>" class="btn btn-secondary btn-sm">Retour</a>
+    </div>
+<% end %>

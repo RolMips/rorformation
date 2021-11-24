@@ -1,0 +1,5 @@
+<h1><%= @category.name %></h1>
+
+<div class="mb-3"><label>Url de la catégorie</label><text class="form-control" readonly><%=  @category.slug %></text></div>
+<div class="mb-3"><label>Nombre d'articles</label><text class="form-control" readonly><%=  @category.posts_count %></text></div>
+<p><a href="<%= categories_path %>" class="btn btn-secondary btn-sm">Retour</a></p>

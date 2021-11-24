@@ -1,0 +1,33 @@
+<% if post.errors.any? %>
+    <div class="alert alert-danger">
+        <ul>
+          <% post.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+          <% end %>
+        </ul>
+    </div>
+<% end %>
+<%= form_for post do |f| %>
+    <div class="mb-3">
+        <label>Titre de l'article</label>
+        <%= f.text_field :title, class: 'form-control' %>
+    </div>
+    <div class="mb-3" >
+        <label>Contenu de l'article</label>
+        <%= f.text_area :content, class: 'form-control' %>
+    </div>
+    <div class="mb-3" >
+      <label>Catégorie de l'article</label>
+      <%= f.select :category_id, Category.pluck(:name, :id), {}, {class: 'form-select form-select-sm'} %>
+    </div>
+    <div class="mb-3" >
+      <div class="form-check form-switch" >
+        <%= f.check_box :online, class: 'form-check-input' %>
+        <label class="form-check-label">En ligne</label>
+      </div>
+    </div>
+    <div class="mb-3" >
+        <button type="submit" class="btn btn-primary btn-sm">Enregister</button>
+        <a href="<%= posts_path %>" class="btn btn-secondary btn-sm">Retour</a>
+    </div>
+<% end %>

@@ -1,0 +1,19 @@
+<h1><%= @post.title %></h1>
+
+<div class="mb-3"><label>Contenu</label><textarea class="form-control" readonly><%= @post.content %></textarea></div>
+<div class="mb-3"><label>Catégorie</label><text class="form-control" readonly><%= @post.category.name %></text></div>
+<div class="mb-3"><label>Tags</label><text class="form-control" readonly><%= @post.tags.map(&:name).join(', ') %></text></div>
+<div class="mb-3">
+  <% if @post.online? %>
+    <div class="form-check form-switch">
+      <input class="form-check-input" type="checkbox" checked disabled>
+      <label class="form-check-label">En ligne</label>
+    </div>
+  <% else %>
+    <div class="form-check form-switch">
+      <input class="form-check-input" type="checkbox" disabled>
+      <label class="form-check-label">En ligne</label>
+    </div>
+  <% end %>
+</div>
+<p><a href="<%= posts_path %>" class="btn btn-secondary btn-sm">Retour</a></p>
